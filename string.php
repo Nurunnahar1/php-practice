@@ -36,3 +36,9 @@ echo "</br>";
 echo "</br>";
 $str5 = "Bangladesh";
 echo chunk_split($str5,3,'-');
+
+
+// $str = '<script>alert(1)</script>';
+// echo $str;
+$str = '<script>alert(1)</script>';
+echo strip_tags($str) ;
