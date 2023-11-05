@@ -30,10 +30,6 @@
 
             <?php 
                 $sql="SELECT * FROM `crud`";
-   
-             
-
-                
                  $result = mysqli_query($connect, $sql);
                 if ($result) {
       
@@ -51,6 +47,10 @@
                              <td>'.$email.'</td>
                              <td>'.$mobile.'</td>
                              <td>'.$password.'</td>
+                             <td>
+                             <button class="btn btn-primary "><a href="update.php?updateid='.$id.'" class="text-light">Update</a></button>
+                             <button class="btn btn-primary "><a href="delete.php?deleteid='.$id.'" class="text-light">Delete</a></button>
+                             </td>
                              </tr>
                              ';
     
@@ -63,6 +63,7 @@
        
 
             </tbody>
+         
         </table>
     </div>
 </body>
