@@ -1,5 +1,5 @@
 <?php include('connect.php');
-
+session_start();
 
 ?>
 
@@ -11,15 +11,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crud Operation</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet"  >
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+ 
 </head>
 
 <body>
     <div class="container">
         <button class="btn btn-primary my-5"><a href="user.php" class="text-light">Add user</a></button>
-        <table class="table">
-            <thead>
+        <table class="table   table-striped" id="myTable">
+            <thead class="table-dark">
                 <tr>
                     <th scope="col">Sl No</th>
                     <th scope="col">Name</th>
@@ -34,7 +37,15 @@
             <?php 
                 $sql="SELECT * FROM `crud`";
                  $result = mysqli_query($connect, $sql);
+                //  if($result){
+                //     header("location:create.php");
+                //  }
+                //  else{
+                //     echo "Something went wrong";
+                //  }
                 if ($result) {
+                    // $_SESSION['status'] ='Data inserted successfully'; 
+                    // header("location:display.php");
       
                         while($row = mysqli_fetch_assoc($result)){
                             $id=$row["id"];
@@ -69,6 +80,18 @@
          
         </table>
     </div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready( function () {
+        $('#myTable').DataTable();
+        } );
+    </script>
 </body>
 
 </html>
